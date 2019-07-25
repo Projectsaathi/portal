@@ -1,4 +1,13 @@
-<!doctype html>
+<?php
+  function __autoload($controller)
+  {
+    require_once "Controller/$controller.php";
+  }
+?>
+
+
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -11,6 +20,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="//cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="../assets/bootstrap/css/dashboard.css" rel="stylesheet">
@@ -121,8 +132,11 @@
             </div>
           </div>
 
-          <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-            <?php include("create.php"); ?>
+          <!-- main body place here -->
+          <!-- <textarea class="ckeditor" name="editor"></textarea> -->
+          <?php include_once 'create.php'; ?>
+
+
         </main>
       </div>
     </div>
@@ -134,6 +148,7 @@
     <script>window.jQuery || document.write('<script src="../assets/bootstrap/js/jquery-slim.min.js"><\/script>')</script>
     <script src="../assets/bootstrap/js/vendor/popper.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/ckeditor_4/ckeditor/ckeditor.js"></script>
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
