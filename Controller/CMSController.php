@@ -2,6 +2,8 @@
 require_once "DatabaseController.php";
 	class CMSController extends DatabaseController
 	{
+		
+// display all records
 		function index()
 		{
 			$sql = "SELECT * FROM news";
@@ -18,6 +20,7 @@ require_once "DatabaseController.php";
 				return $data;
 			}
 		}
+
 // insert function
 		public function create($fields)
 		{
@@ -45,9 +48,16 @@ require_once "DatabaseController.php";
 
 		}
 
-		function read()
+
+
+		public function read($id)
 		{
-			echo "this function is used to read individual";
+			$sql = "SELECT * FROM news WHERE id = :id";
+			$stmt = $this->connect()->prepare($sql);
+			$stmt->bindValue(":id",$id);
+			$stmt->execute();
+			$result =  $stmt->fetch(PDO::FETCH_ASSOC);
+			return $result;
 		}
 
 		function delete()
